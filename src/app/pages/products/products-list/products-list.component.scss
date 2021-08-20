@@ -1,0 +1,132 @@
+
+$colorlightGrey:rgb(248, 248, 248);
+.row{
+justify-content: space-between;
+align-items:flex-start;
+}
+
+.header-sty{
+    background-color: yellow !important;
+}
+
+.card{
+    margin:20px !important;
+}
+
+.field-input{
+    width:100%;
+    padding:5px;
+    label{
+        font-size:14px;
+        text-transform: capitalize;
+        margin:0px 5px;
+    }
+    span{
+        color: rgb(160, 160, 160);
+    }
+}
+
+.range-value{
+    padding:5px;
+    background-color:$colorlightGrey;
+}
+
+.btn-box{
+    border: none;
+    outline:1px solid lightgrey;
+    padding:5px;
+    font-size:10px;
+    background-color: white;
+}
+.product-bar{
+    padding:25px 0px;
+}
+
+@mixin selectStyle{
+padding:5px 10px;
+border-radius:20px;
+color:black;
+border:1px solid lightgrey;
+outline: none;
+margin:0px 5px;
+}
+
+.sort , .show-products{
+display: flex;
+justify-content:flex-end;
+select{
+    @include selectStyle();
+}
+}
+.pagination-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.pagination-span{
+   padding:5px 10px;
+    border:1px solid lightgrey;
+}
+.mobile{
+    display:none;
+}
+
+
+.btn-bar{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size:30px;
+}
+
+.menu-bar{
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 0px;
+    width:100%;
+    z-index:10;
+    padding:20px;
+    ul{
+        width:100%;
+        list-style-type: none;
+        li a {
+            text-decoration: none;
+            color: black;
+            padding:5px;
+            display: block;
+            &:hover{
+                background-color: rgb(240, 240, 240);
+            }
+        }
+
+    }
+}
+
+.m{
+    >div {
+        margin:10px 0px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.slider-box{
+    overflow:hidden;
+}
+
+.slider{
+    width:150%;
+    overflow-x:auto;
+}
+@media only screen and (max-width: 1000px){
+
+.full{
+    display:none;
+}
+.mobile{
+    display: block;
+}
+
+}

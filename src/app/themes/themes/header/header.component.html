@@ -1,0 +1,46 @@
+<nav class="row">
+    <div class="col-4">
+      <div class="title">
+        <h1><span>E-</span>SHOP</h1>
+      </div>
+    </div>
+    <div class="col-4 full"  >
+      <ul class="list-style">
+      <li><a [routerLink]="['/products/list/man']">Man</a></li>
+      <li><a [routerLink]="['/products/list/woman']">Woman</a></li>
+      <li><a [routerLink]="['/products/list/kids']">Kids</a></li>
+      </ul>
+    </div>
+    <div class="col-4 full">
+      <ul class="list-style">
+        <li><fa-icon [icon]="faUser"></fa-icon></li>        
+        <li><fa-icon [icon]="faSearch"></fa-icon></li>
+        <li><fa-icon [icon]="faShoppingBasket"></fa-icon></li>
+      </ul>
+    </div>
+    <div class="col-6 mobile">
+      <ul class="list-style">        
+        <li><fa-icon [icon]="faSearch"></fa-icon></li>
+        <li><fa-icon [icon]="faShoppingBasket"></fa-icon></li>
+      </ul>
+    </div>
+
+    <div class="col-2 mobile">
+      <p>
+        <button class="btn-bar" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample">
+          <fa-icon [icon]='faBars'></fa-icon>
+        </button>
+      </p>
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <div class="menu-bar">
+            <ul>
+              <li><a [routerLink]="['/products/list/man']">Man</a></li>
+              <li><a [routerLink]="['/products/list/woman']">Woman</a></li>
+              <li><a [routerLink]="['/products/list/kids']">Kids</a></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+
+  </nav>

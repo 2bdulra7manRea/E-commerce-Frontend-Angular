@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+//
+
+//@import"/node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+
+
+@import"/node_modules/bootstrap/scss/bootstrap.scss";
+
+
+.card{
+    margin:8px 0px !important;
+}
+
+.card-header{
+    background-color: white !important;
+    border: none !important;
+}
+
+
+.slider[_ngcontent-kvd-c109] .bar[_ngcontent-kvd-c109] div.filler[_ngcontent-kvd-c109] > span[_ngcontent-kvd-c109]{
+
+
+background: red !important;
+
+}

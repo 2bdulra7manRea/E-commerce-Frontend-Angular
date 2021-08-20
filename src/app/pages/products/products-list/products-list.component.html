@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="row" *ngIf="!!products &&products.length!==0">
+    <div class="col-4" style="display: flex; justify-content:center;">
+    <div style="width:80%;" class="full">  
+      <ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+        <ngb-panel  id="custom-panel-1">
+
+          <ng-template class="header-sty" ngbPanelHeader let-opened="opened">
+            <div  class="d-flex align-items-center justify-content-between ">
+              <h6 class="m-0">Products type</h6>
+              <button ngbPanelToggle class="btn btn-link">
+                <fa-icon style="color: black;" [icon]="faChevronDown"></fa-icon>
+              </button>
+            </div>
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+            <div class="field-input" *ngFor="let item of filterCategories(productsItems,'type'); let i=index" >
+              <input type="checkbox" value="isChecked" (change)='getValueProductType($event)' [name]='item.name' placeholder="Just a placeholder">
+              <label>{{item.name}}</label>
+              <span>( {{item.number}} )</span>
+            </div>
+          </ng-template>
+        </ngb-panel>
+   
+        <ngb-panel id="custom-panel-4">
+          <ng-template ngbPanelHeader let-opened="opened">
+            <div class="d-flex align-items-center justify-content-between">
+              <h6 class="m-0">Price</h6>
+              <button ngbPanelToggle class="btn btn-link">
+                <fa-icon style="color: black;" [icon]="faChevronDown"></fa-icon>
+              </button>
+            </div>
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+            <div class="field-input" *ngIf="!!rangePrices" >
+            <div style="width:100%; display: flex; justify-content: space-between;">
+            <label class="range-value">{{rangePrices.minValue}}</label>
+            <label class="range-value" >{{rangePrices.maxValue}}</label>
+            </div>
+            <npn-slider [min]="rangePrices.minValue" [max]="rangePrices.maxValue" (onChange)="onSliderChange($event)"></npn-slider>
+            </div>
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel id="custom-panel-2">
+          <ng-template ngbPanelHeader let-opened="opened">
+            <div class="d-flex align-items-center justify-content-between">
+              <h6 class="m-0"> Size</h6>
+              <button ngbPanelToggle class="btn btn-link">
+                <fa-icon style="color: black;" [icon]="faChevronDown"></fa-icon>
+              </button>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="field-input" >
+              <button class="btn-box" *ngFor="let item of filterCategories(productsItems,'size');" (click)="filterProducts('size' ,item.name)" >{{item.name}}</button>
+            </div>
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel id="custom-panel-3">
+          <ng-template ngbPanelHeader let-opened="opened">
+            <div class="d-flex align-items-center justify-content-between">
+              <h6 class="m-0">Color</h6>
+              <button ngbPanelToggle class="btn btn-link">
+                <fa-icon style="color: black;" [icon]="faChevronDown"></fa-icon>
+              </button>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div>
+              <button class="btn-box" *ngFor="let item of filterCategories(productsItems,'color');" (click)="filterProducts('color',item.name)">
+                <span style="width:30px; margin:3px; display: inline-block; outline:1px solid gray; height:30px;" [ngStyle]="{'background-color':item.name}"></span>
+              </button>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+</div>
+
+    </div>
+
+
+    <div class="col-lg-8">
+      <div class="row product-bar">
+        <div *ngIf="!!title" class="col-4">
+          <h6 style="text-transform: capitalize;" >{{title}} top <span style="color:lightgray;">( {{!!productsItems?productsItems.length:0}} )</span></h6>
+          
+        </div>
+       
+        <div class="col-4 full show-products">
+          <label>Show products :</label>
+          <select  name="Showproducts" id="" (change)="showProductsSelection($event)" >
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
+        </div>
+        <div class="col-4 full sort">
+          <label>Sort :</label>
+          <select  name="sort" id="" (change)="sortSelection($event)" >
+            <option value="featured" >Featured</option>
+            <option value="popular">Popular</option>
+            <option value="new" >New</option>
+          </select>
+        </div>
+
+        <div class="col-6 mobile"></div>
+        <div class="col-2 mobile">
+          <p>
+            <button class="btn-bar" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseExample">
+              <fa-icon [icon]='faSlidersH'></fa-icon>
+            </button>
+          </p>
+          <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+              <div class="menu-bar m">
+                <div class="show-products">
+                  <p>Show products </p>
+                  <select  name="Showproducts" style="width:60%;" id="" (change)="showProductsSelection($event)" >
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                  </select>
+                </div>
+                <div class="sort">
+                  <p>Sort</p>
+                  <select  name="sort" id="" style="width:60%;" (change)="sortSelection($event)" >
+                    <option value="featured" >Featured</option>
+                    <option value="popular">Popular</option>
+                    <option value="new" >New</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Color</p>
+                  <button class="btn-box" *ngFor="let item of filterCategories(productsItems,'color');" (click)="filterProducts('color',item.name)">
+                    <span style="width:30px; margin:3px; display: inline-block; outline:1px solid gray; height:30px;" [ngStyle]="{'background-color':item.name}"></span>
+                  </button>
+                </div>
+                <div>
+                  <p>Size</p>
+                  <button class="btn-box" *ngFor="let item of filterCategories(productsItems,'size');" (click)="filterProducts('size',item.name)">
+                    <span style="width:30px; margin:3px; display: inline-block; outline:1px solid gray; height:30px; background-color: white;">{{item.name}}</span>
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mobile">
+        <div class="col-12 slider-box">
+
+          <div class="slider" >
+            <div class="slider-item" style="display: inline-block; margin:0px 5px; cursor: pointer; " *ngFor="let item of filterCategories(productsItems,'type')" (click)="filterProducts('type',item.name)">
+              <p>{{item.name}} <span style="color: lightgray;">({{item.number}})</span> </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row" *ngIf="!!products &&products.length!==0">
+        <div class="col-sm-4" *ngFor="let item of products">
+          <app-products-item [Product]='item'></app-products-item>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <button (click)="Pagination('previous')" class="pagination-btn">Previous</button>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-5">
+          <h5>Page <span class="pagination-span">{{currentPage+1}}</span> </h5>
+        </div>
+        <div class="col-1">
+          <button (click)="Pagination('next')" class="pagination-btn">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

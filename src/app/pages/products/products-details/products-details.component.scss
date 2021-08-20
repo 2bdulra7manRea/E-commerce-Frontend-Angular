@@ -1,0 +1,140 @@
+$colorLightGrey:rgb(194, 194, 194);
+.product-info{
+    padding:30px;
+    background-color:white;
+}
+
+.price{
+    width:100%;
+    padding:20px 0px;
+background-color: white;
+    span{
+        font-size:20px;
+        margin-right:30px;
+    }
+
+    .discount{
+        color: red;
+    }
+    .price-non{
+        color:lightgray;
+        text-decoration:line-through;
+    }
+    
+}
+.color{
+width:100%;
+padding:20px 0px;
+}
+
+.size{
+
+    width:100%;
+    padding:20px 0px;
+
+    select{
+        border-radius:20px;
+        background-color: white;
+        color: $colorLightGrey;
+        outline: none;
+        border: none;
+        padding:10px 20px;
+        border:1px solid rgb(136, 136, 136);
+    }
+
+
+}
+
+.quantity{
+    padding:20px 0px;
+    width:100%;
+    .addToCart{
+        margin:0px 20px;
+        padding:10px 20px;
+        background-color: orange;
+        color: black;
+        border: none;
+        border-radius:20px;
+    }
+
+    .heart{
+        background-color: white;
+        padding:10px;
+        border-radius:50%;
+        border:1px solid $colorLightGrey;
+    }
+
+    .addQantity{
+        display: inline;
+        background-color:white;
+        padding:10px 20px;
+        border:1px solid $colorLightGrey;
+        border-radius:20px;
+        button{
+            background-color: white;
+            border: none;
+            outline: none;
+        }
+
+        >*{
+            color: black;
+            margin:0px 5px;
+            font-size:20px;
+        }
+    }
+}
+
+.viewer{
+    display: flex;
+    width:100%;
+    padding:20px;
+    justify-content: space-between;
+    .bar{
+        width:20%;
+        img{
+            margin:10px 5px;
+            width:100px;
+            height:100px;
+            display: block;
+        }
+    }
+    .photo{
+        width:80%;
+        height:450px;
+        padding:10px;
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
+}
+
+.btn-box{
+    border: none;
+    outline:1px solid lightgrey;
+    padding:5px;
+    font-size:10px;
+    background-color: white;
+}
+
+
+.viewer-full{
+    display: block;
+}
+.mobile-viewer{
+    display:none;
+}
+
+
+
+@media only screen and (max-width: 800px)  {
+.viewer-full ,.header-bar{
+    display:none;
+}    
+.mobile-viewer{
+    display: block;
+}
+
+
+
+}

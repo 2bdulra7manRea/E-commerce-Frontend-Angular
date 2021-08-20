@@ -1,0 +1,29 @@
+<div class="card-item">
+
+<div class="card-item-img">
+
+    <button (click)="Liked()" [class]="liked?'Liked-heart':''" class="icon">
+     <fa-icon [icon]="faHeart"></fa-icon>   
+    </button> 
+<img [src]="!!Product.photos?Product.photos[0]:''" alt="product photo">
+</div>
+
+
+<div class="card-item-content">
+    <h6 [routerLink]="['/products/details/',Product.id]">{{Product.name}}</h6>
+</div>
+<div class="card-item-footer">
+<ng-container *ngIf="!!Product.discount &&Product.discount!==0; else elseTemplate">
+<span class="discount">
+{{(Product.price-Product.discount) | currency:'USD' }}
+</span>
+<span class="price">{{Product.price | currency:'USD' }}</span>    
+</ng-container>
+<ng-template #elseTemplate>
+<h3 >{{Product.price | currency:'USD' }}</h3>      
+
+</ng-template>
+
+</div>
+</div>
+
